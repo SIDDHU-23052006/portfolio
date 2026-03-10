@@ -41,7 +41,7 @@ export function Experience() {
               >
                 <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-card border-2 border-secondary ring-4 ring-background" />
                 <h3 className="text-xl font-bold text-white mb-1">GodParticles</h3>
-                <p className="text-secondary font-medium mb-3">Web Developer (Inern)</p>
+                <p className="text-secondary font-medium mb-3">Web Developer (Intern)</p>
                 <p className="text-muted-foreground leading-relaxed">
                   Processed and analyzed visual inspection data for Printed Circuit Boards. Optimized detection algorithms leading to higher accuracy in identifying manufacturing defects.
                 </p>
@@ -55,7 +55,7 @@ export function Experience() {
               >
                 <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-card border-2 border-secondary ring-4 ring-background" />
                 <h3 className="text-xl font-bold text-white mb-1">Infosys Springboard</h3>
-                <p className="text-secondary font-medium mb-3">AI and LLMs (Inern)</p>
+                <p className="text-secondary font-medium mb-3">AI and LLMs (Intern)</p>
                 <p className="text-muted-foreground leading-relaxed">
                   Designed and develop a attractive plaform for content creation with integration of LLMs(Info Creator).
                 </p>
