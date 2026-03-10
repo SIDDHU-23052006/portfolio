@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
-import profileImg from "@assets/Gemini_Generated_Image_794yb9794yb9794y_1773049520317.png";
+import profileImg from "@assets/favicon.png";
 
 export function Hero() {
   return (
@@ -88,7 +88,7 @@ export function Hero() {
           <div className="absolute inset-0 bg-gradient-to-tr from-rose-500 to-violet-600 rounded-[2rem] transform -rotate-3 scale-[1.02] opacity-80" />
           
           <div className="relative rounded-[2rem] overflow-hidden border border-white/20 bg-card p-2 transform transition-transform duration-500 hover:scale-[1.02]">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/80 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70 z-10" />
             <img 
               src={profileImg} 
               alt="Profile" 
@@ -99,7 +99,7 @@ export function Hero() {
             <motion.div 
               animate={{ y: [0, -10, 0] }} 
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-8 -left-8 z-20 glass-card px-4 py-3 rounded-2xl flex items-center gap-3"
+              className="absolute top-6 left-6 z-30 px-4 py-3 rounded-xl flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/20 shadow-lg"
             >
               <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
                 <span className="font-bold font-display text-lg">1st</span>
@@ -113,7 +113,7 @@ export function Hero() {
             <motion.div 
               animate={{ y: [0, 10, 0] }} 
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-12 -right-6 z-20 glass-card px-4 py-3 rounded-2xl flex items-center gap-3"
+              className="absolute bottom-6 right-6 z-30 px-4 py-3 rounded-xl flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/20 shadow-lg"
             >
               <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
                 <span className="font-bold font-display text-lg">10</span>

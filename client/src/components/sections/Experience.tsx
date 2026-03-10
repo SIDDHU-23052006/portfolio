@@ -46,6 +46,20 @@ export function Experience() {
                   Processed and analyzed visual inspection data for Printed Circuit Boards. Optimized detection algorithms leading to higher accuracy in identifying manufacturing defects.
                 </p>
               </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="relative"
+              >
+                <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-card border-2 border-secondary ring-4 ring-background" />
+                <h3 className="text-xl font-bold text-white mb-1">Infosys Springboard</h3>
+                <p className="text-secondary font-medium mb-3">AI and LLMs (Inern)</p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Designed and develop a attractive plaform for content creation with integration of LLMs(Info Creator).
+                </p>
+              </motion.div>
 
             </div>
           </div>
