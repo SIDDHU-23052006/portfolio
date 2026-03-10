@@ -7,6 +7,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-await registerRoutes(app);
+registerRoutes(app);   // ❗ remove await
 
 export default serverless(app);
