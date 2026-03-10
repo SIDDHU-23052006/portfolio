@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Download, Github, Linkedin, Mail, Trophy } from "lucide-react";
 import profileImg from "@assets/favicon.png";
 
 export function Hero() {
@@ -109,7 +109,19 @@ export function Hero() {
                 <p className="text-sm font-bold text-white">Winner</p>
               </div>
             </motion.div>
-
+            <motion.div 
+  animate={{ y: [0, -8, 0] }} 
+  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+  className="absolute bottom-6 left-6 z-30 px-4 py-3 rounded-xl flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/20 shadow-lg"
+>
+  <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+    <Trophy size={18} />
+  </div>
+  <div>
+    <p className="text-xs text-muted-foreground font-medium">SGFI National</p>
+    <p className="text-sm font-bold text-white">Football Player</p>
+  </div>
+</motion.div>
             <motion.div 
               animate={{ y: [0, 10, 0] }} 
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
