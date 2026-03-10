@@ -10,7 +10,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
         
         <div className="text-xl font-display font-bold tracking-tighter text-white">
-          SIDDHARTH<span className="text-gradient">.Portfolio</span>
+          Siddhu's<span className="text-gradient"> Portfolio</span>
         </div>
 
         <p className="text-sm text-muted-foreground text-center">

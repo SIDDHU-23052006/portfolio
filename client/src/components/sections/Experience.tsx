@@ -25,8 +25,8 @@ export function Experience() {
                 className="relative"
               >
                 <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-card border-2 border-primary ring-4 ring-background" />
-                <h3 className="text-xl font-bold text-white mb-1">Data Analyst</h3>
-                <p className="text-primary font-medium mb-3">Factorygaurd Predictive Maintenance</p>
+                <h3 className="text-xl font-bold text-white mb-1">Zaalima Development PVT. LTD.</h3>
+                <p className="text-primary font-medium mb-3">Data Analyst(Intern)</p>
                 <p className="text-muted-foreground leading-relaxed">
                   Analyzed complex machine data to predict potential equipment failures. Developed statistical models that improved maintenance scheduling, reducing unexpected downtime.
                 </p>
@@ -40,8 +40,8 @@ export function Experience() {
                 className="relative"
               >
                 <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-card border-2 border-secondary ring-4 ring-background" />
-                <h3 className="text-xl font-bold text-white mb-1">Data Analyst</h3>
-                <p className="text-secondary font-medium mb-3">Visionspec PCB Detection</p>
+                <h3 className="text-xl font-bold text-white mb-1">GodParticles</h3>
+                <p className="text-secondary font-medium mb-3">Web Developer (Inern)</p>
                 <p className="text-muted-foreground leading-relaxed">
                   Processed and analyzed visual inspection data for Printed Circuit Boards. Optimized detection algorithms leading to higher accuracy in identifying manufacturing defects.
                 </p>
@@ -108,6 +108,9 @@ export function Experience() {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-1">Secondary School Leaving Certificate (10th)</h3>
                 <p className="text-accent font-medium">Jeevanandam Govt Hr Sec School, Puducherry</p>
+                <div className="flex items-center gap-2 text-white/80 bg-white/5 w-fit px-4 py-2 rounded-lg">
+                  <span className="font-bold text-lg text-white">80%</span> Percentage
+                </div>
               </motion.div>
             </div>
 
@@ -123,7 +126,9 @@ export function Experience() {
               {[
                 { title: "1st Place Winner", desc: "Innovators Day Hackathon (Smart Train Ticket System)" },
                 { title: "Top 10 Rank", desc: "National Project Expo" },
-                { title: "2nd Prize", desc: "Paper Presentation at SCIENSEA'24 (MECHCABS)" }
+                { title: "2nd Prize", desc: "Paper Presentation at SCIENSEA'24 (MECHCABS)" },
+                { title: "Best Student of the year - 2016", desc: "LIC presents for top students" },
+                { title: "Football Nationals - 2019", desc: "Represented Puducherry Naional football team as strawber back(center defence)" }
               ].map((item, i) => (
                 <motion.div 
                   key={i}

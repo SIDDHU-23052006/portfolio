@@ -4,7 +4,7 @@ import { Terminal, Github, Smartphone, Figma, LayoutTemplate, Braces, Database, 
 const skills = [
   { name: "Java", icon: Terminal, color: "text-orange-400", bg: "bg-orange-400/10" },
   { name: "C/C++", icon: Braces, color: "text-blue-400", bg: "bg-blue-400/10" },
-  { name: "Front-End", icon: LayoutTemplate, color: "text-cyan-400", bg: "bg-cyan-400/10" },
+  { name: "FullStack", icon: LayoutTemplate, color: "text-cyan-400", bg: "bg-cyan-400/10" },
   { name: "Data Structures", icon: Network, color: "text-purple-400", bg: "bg-purple-400/10" },
   { name: "DBMS", icon: Database, color: "text-emerald-400", bg: "bg-emerald-400/10" },
   { name: "OOP", icon: Blocks, color: "text-indigo-400", bg: "bg-indigo-400/10" },

@@ -46,7 +46,7 @@ export function Navbar() {
           onClick={(e) => scrollToSection(e, "#home")}
           className="text-2xl font-display font-bold tracking-tighter text-white z-50 relative group"
         >
-          SIDDHARTH<span className="text-gradient">.Portfolio</span>
+          Siddhu's<span className="text-gradient"> Portfolio</span>
           <div className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gradient-to-r from-rose-500 to-violet-600 transition-all duration-300 group-hover:w-full"></div>
         </a>
 
