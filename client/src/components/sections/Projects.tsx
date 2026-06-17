@@ -1,42 +1,72 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Code2, ShieldAlert, Cpu } from "lucide-react";
+import { ExternalLink, Github, Cpu, Sparkles, Receipt, ShieldAlert, Eye, Car } from "lucide-react";
 
 const projects = [
   {
-    title: "Smart Train Ticket Verification",
+    title: "AI Content Creation (Info Creator)",
+    role: "AI Developer",
+    description: "An intelligent web-based platform that integrates Large Language Models (LLMs) with an interactive rich text editor workspace. Assists users in generating structured contextual drafts, customizing sentence tone and formatting in real-time, and tracking readability analysis with detailed writing metrics.",
+    tags: ["React", "Flask", "Python", "LLMs (OpenAI/Gemini/Mistral)", "Rich Text Editor", "Readability Analysis"],
+    highlights: [],
+    icon: Sparkles,
+    color: "from-violet-500 to-fuchsia-500",
+    github: "https://github.com/SIDDHU-23052006/content-creation.git",
+    live: "https://content-creation-lac.vercel.app/"
+  },
+  {
+    title: "Invoice Generator",
+    role: "Software Dev Intern",
+    description: "A comprehensive SAP-mapped billing solution designed to streamline invoice operations for finance workflows. Features real-time tax and total calculations, robust invoice management pipelines, and seamless PDF document export capabilities.",
+    tags: ["React", "Flask", "SQL", "Python", "Data Management", "PDF Generation"],
+    highlights: [],
+    icon: Receipt,
+    color: "from-emerald-400 to-teal-500",
+    github: "https://github.com/SIDDHU-23052006/iNVOICE_gENERATOR.git",
+    live: "https://i-nvoice-g-enerator-api-server.vercel.app/"
+  },
+  {
+    title: "Smart Train Ticket Verification System",
     role: "Team Leader",
-    description: "Built with React, Firebase, Flask, Java, ESP32-CAM AI Thinker, Arduino, NFC, and deep sensors to automate and secure the ticket verification process.",
-    tags: ["React", "Firebase", "Flask", "IoT", "NFC"],
+    description: "An automated web and Android IoT system that revolutionizes train travel validation. Integrates entry-point deep sensors for passenger detection, NFC readers for ticket checks, and ESP32-CAM AI Thinker modules for real-time image recognition and unauthorized entry prevention.",
+    tags: ["React", "Firebase", "Flask", "Java", "IoT", "Arduino", "ESP32-CAM", "NFC"],
     highlights: ["1st Place - Innovators Day Hackathon", "Top 10 - National Project Expo"],
     icon: Cpu,
-    color: "from-blue-500 to-cyan-400"
+    color: "from-blue-500 to-cyan-400",
+    github: "https://github.com/SIDDHU-23052006/Smart_Train_Ticket_Verification_System.git",
+    live: "" // same as github -> show only github button
+  },
+  {
+    title: "FactoryGuard - Predictive Maintenance",
+    role: "Data Engineer",
+    description: "An end-to-end Machine Learning and IoT simulation system that forecasts factory machine breakdowns up to 24 hours in advance. Using real-time stream simulation of IoT sensor data (temperature, vibration, and pressure), Factory Guard calculates rolling window health metrics and deploys an optimized XGBoost classifier to predict failures before they happen—allowing operators to schedule maintenance and prevent costly production downtime.",
+    tags: ["Python", "Flask", "XGBoost", "Machine Learning", "IoT", "Data Engineering", "Stream Simulation"],
+    highlights: [],
+    icon: ShieldAlert,
+    color: "from-rose-500 to-amber-500",
+    github: "https://github.com/SIDDHU-23052006/Factory-Gaurd-AI-Predictive-Maintanence.git",
+    live: "" // same as github -> show only github button
+  },
+  {
+    title: "VisionSpec QC",
+    role: "AI Engineer",
+    description: "Automated Visual Quality Control for high-speed manufacturing lines using Computer Vision and Deep Learning. VisionSpec QC uses a highly optimized MobileNetV2 architecture (via Transfer Learning) to inspect Printed Circuit Boards (PCBs) in real-time, instantly classifying them as 'Pass' or 'Defect'. It also features Grad-CAM (Gradient-weighted Class Activation Mapping) localization to visually highlight the exact area of the defect, ensuring full interpretability for quality assurance operators.",
+    tags: ["Python", "MobileNetV2", "Transfer Learning", "Computer Vision", "Deep Learning", "Grad-CAM"],
+    highlights: [],
+    icon: Eye,
+    color: "from-indigo-500 to-purple-500",
+    github: "https://github.com/SIDDHU-23052006/VisionSpec_QC.git",
+    live: "" // same as github -> show only github button
   },
   {
     title: "MECHCABS (Mechanic + Cabs)",
     role: "Team Leader",
-    description: "GPS-based mobile app connecting users with nearby mechanics and cab services seamlessly. Features robust cloud services architecture.",
-    tags: ["Mobile App", "GPS", "Cloud Services", "Java"],
+    description: "GPS-based mobile app connecting stranded users in rural or remote areas with nearby registered mechanics and emergency cab services. Employs OTP-based validation to ensure service authenticity and security, providing alternative mobility options seamlessly.",
+    tags: ["Mobile App", "GPS", "Cloud Services", "Java", "Android"],
     highlights: ["2nd Prize - Paper Presentation (SCIENSEA'24)"],
-    icon: Code2,
-    color: "from-orange-500 to-rose-500"
-  },
-  {
-    title: "AI Content Creation (Info Creator)",
-    role: "Team Leader",
-    description: "Web-based intelligent platform with an interactive editor that uses AI to generate, format, and optimize content efficiently.",
-    tags: ["Web Dev", "AI/LLM", "Interactive Editor"],
-    highlights: [],
-    icon: Code2,
-    color: "from-violet-500 to-fuchsia-500"
-  },
-  {
-    title: "Invoice Generator",
-    role: "Team Leader",
-    description: "Comprehensive billing solution tailored for small businesses to create, manage, and track invoices with real-time analytics.",
-    tags: ["Front-End", "Data Management", "PDF Generation"],
-    highlights: [],
-    icon: Code2,
-    color: "from-emerald-400 to-teal-500"
+    icon: Car,
+    color: "from-orange-500 to-rose-500",
+    github: "", // no link
+    live: "" // no link
   }
 ];
 
@@ -60,7 +90,7 @@ export function Projects() {
             transition={{ delay: 0.1 }}
             className="text-lg text-muted-foreground max-w-2xl"
           >
-            A showcase of my technical leadership, problem-solving skills, and ability to build full-stack & IoT solutions.
+            A showcase of my technical leadership, problem-solving skills, and ability to build full-stack, AI, & IoT solutions.
           </motion.p>
         </div>
 
@@ -85,12 +115,28 @@ export function Projects() {
                     </div>
                   </div>
                   <div className="flex gap-3">
-                    <button className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
-                      <Github size={18} />
-                    </button>
-                    <button className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all">
-                      <ExternalLink size={18} />
-                    </button>
+                    {project.github && (
+                      <a 
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+                        title="GitHub Repository"
+                      >
+                        <Github size={18} />
+                      </a>
+                    )}
+                    {project.live && (
+                      <a 
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+                        title="Live Site"
+                      >
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
                   </div>
                 </div>
 
@@ -134,3 +180,4 @@ export function Projects() {
     </section>
   );
 }
+
