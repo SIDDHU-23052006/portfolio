@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+
+    /* Deep space dark mode base */
+    --background: 240 11% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 11% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 11% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Sunset / Cosmic Gradient Base Colors */
+    --primary: 338 80% 60%;      /* Rose/Pink */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 262 83% 58%;    /* Violet */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 10% 12%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 210 100% 60%;      /* Bright Blue */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 338 80% 60%;
+    
+    --radius: 1rem;
+  }
+
+  /* Force dark mode for this specific portfolio */
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
+    font-family: var(--font-body);
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(225, 29, 72, 0.05) 0%, transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(124, 58, 237, 0.05) 0%, transparent 25%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-violet-600 to-blue-600;
+  }
+  
+  .bg-gradient-mesh {
+    background-color: hsl(var(--background));
+    background-image: 
+      radial-gradient(at 40% 20%, hsla(338, 80%, 60%, 0.15) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsla(262, 83%, 58%, 0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsla(210, 100%, 60%, 0.15) 0px, transparent 50%);
+  }
+
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+
+  .glow-hover {
+    @apply transition-all duration-500 hover:shadow-[0_0_30px_-5px_rgba(225,29,72,0.3)] hover:border-primary/30 hover:-translate-y-1;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
