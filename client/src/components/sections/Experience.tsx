@@ -115,6 +115,13 @@ const expoPhotos = [
   { src: "/assets/expo/device_in_train.jpg", caption: "Real-world testing of the verification system on-board the train" }
 ];
 
+const studentPhotos = [
+  { src: "/assets/student/certificate.jpg", caption: "LIC Student of the Year 2015-2016 Certificate for outstanding academic performance" },
+  { src: "/assets/student/holding_trophy.jpg", caption: "Receiving the LIC Student of the Year Award 2016" },
+  { src: "/assets/student/trophy_closeup.png", caption: "Close-up of the LIC Student of the Year 2016 Trophy" },
+  { src: "/assets/student/trophy_certificate.png", caption: "LIC Student of the Year Award 2016 Trophy and Certificate" }
+];
+
 interface FolderCardProps {
   item: typeof milestones[0];
   index: number;
@@ -498,6 +505,19 @@ export function Experience() {
                     item={item} 
                     index={i} 
                     photos={expoPhotos}
+                    centerPhotoIdx={0}
+                    leftPhotoIdx={1}
+                    rightPhotoIdx={2}
+                  />
+                );
+              }
+              if (i === 3) {
+                return (
+                  <InteractiveFolderCard 
+                    key={i} 
+                    item={item} 
+                    index={i} 
+                    photos={studentPhotos}
                     centerPhotoIdx={0}
                     leftPhotoIdx={1}
                     rightPhotoIdx={2}
