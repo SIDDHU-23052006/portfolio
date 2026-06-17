@@ -270,18 +270,27 @@ function InteractiveFolderCard({
 
       {/* Lightbox / Gallery Modal */}
       {isOpen && (
-        <div className="fixed inset-0 bg-background/95 backdrop-blur-md z-50 flex flex-col items-center justify-center p-6">
+        <div 
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 bg-background/95 backdrop-blur-md z-[100] flex flex-col items-center justify-center p-6"
+        >
           {/* Close button */}
           <button 
-            onClick={() => setIsOpen(false)}
-            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-colors cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsOpen(false);
+            }}
+            className="fixed top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-110 shadow-lg cursor-pointer z-[110]"
             aria-label="Close Lightbox"
           >
             <X className="w-6 h-6" />
           </button>
 
           {/* Main Photo Display Area */}
-          <div className="relative max-w-4xl w-full h-[60vh] flex items-center justify-center mb-6">
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-4xl w-full h-[60vh] flex items-center justify-center mb-6"
+          >
             {/* Left navigation arrow */}
             <button 
               onClick={(e) => {
@@ -315,17 +324,26 @@ function InteractiveFolderCard({
           </div>
 
           {/* Caption & Status */}
-          <div className="text-center mb-8 max-w-2xl px-4">
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="text-center mb-8 max-w-2xl px-4"
+          >
             <h4 className="text-white text-lg font-medium leading-snug">{photos[activePhotoIdx].caption}</h4>
             <p className="text-sm text-muted-foreground mt-1.5">Photo {activePhotoIdx + 1} of {photos.length}</p>
           </div>
 
           {/* Thumbnails row */}
-          <div className="flex gap-3 overflow-x-auto max-w-full pb-2 px-4 justify-start sm:justify-center">
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="flex gap-3 overflow-x-auto max-w-full pb-2 px-4 justify-start sm:justify-center"
+          >
             {photos.map((photo, pIdx) => (
               <button
                 key={pIdx}
-                onClick={() => setActivePhotoIdx(pIdx)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActivePhotoIdx(pIdx);
+                }}
                 className={`w-16 h-12 sm:w-20 sm:h-16 rounded-xl overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
                   activePhotoIdx === pIdx ? "border-primary scale-105 shadow-lg shadow-primary/20" : "border-white/10 hover:border-white/30"
                 }`}
@@ -413,7 +431,7 @@ export function Experience() {
                   </div>
 
                   {/* Card Container */}
-                  <div className="w-full md:w-1/2 pl-16 md:pl-0 md:px-12">
+                  <div className={`w-full md:w-1/2 pl-16 ${isLeft ? "md:pl-12 md:pr-0" : "md:pl-0 md:pr-12"}`}>
                     <motion.div
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
