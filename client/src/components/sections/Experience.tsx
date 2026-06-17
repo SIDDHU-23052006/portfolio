@@ -101,17 +101,39 @@ const milestones = [
   { title: "Football Nationals - 2019", desc: " stopper back (center defence)" }
 ];
 
-function ProjectExpoFolderCard({ item, index }: { item: typeof milestones[0]; index: number }) {
+const innovatorsPhotos = [
+  { src: "/assets/innovators/certificate.png", caption: "1st Place Winner Certificate - Innovators Day 2024 (Sri Manakula Vinayagar Engineering College)" },
+  { src: "/assets/innovators/team_working.jpg", caption: "Teammates calibrating the ticket validation prototype" },
+  { src: "/assets/innovators/presentation.jpg", caption: "Presenting the IoT smart check-in device to evaluators" }
+];
+
+const expoPhotos = [
+  { src: "/assets/expo/certificate.png", caption: "Certificate of Participation - National Project Expo (INAE Youth Conclave)" },
+  { src: "/assets/expo/group_photo.jpg", caption: "Our Team presenting the ticket verification system at Anurag University" },
+  { src: "/assets/expo/working_on_device.jpg", caption: "Calibrating and assembling the Ticket Verification IoT box" },
+  { src: "/assets/expo/device_closeup.jpg", caption: "Detailed front panel wiring of the ESP32 & NFC prototype" },
+  { src: "/assets/expo/device_in_train.jpg", caption: "Real-world testing of the verification system on-board the train" }
+];
+
+interface FolderCardProps {
+  item: typeof milestones[0];
+  index: number;
+  photos: { src: string; caption: string }[];
+  centerPhotoIdx: number;
+  leftPhotoIdx: number;
+  rightPhotoIdx: number;
+}
+
+function InteractiveFolderCard({ 
+  item, 
+  index, 
+  photos, 
+  centerPhotoIdx, 
+  leftPhotoIdx, 
+  rightPhotoIdx 
+}: FolderCardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activePhotoIdx, setActivePhotoIdx] = useState(0);
-
-  const photos = [
-    { src: "/assets/expo/group_photo.jpg", caption: "Our Team at the INAE Youth Conclave 2025 banner" },
-    { src: "/assets/expo/certificate.png", caption: "Certificate of Participation - National Project Expo" },
-    { src: "/assets/expo/working_on_device.jpg", caption: "Calibrating and assembling the Ticket Verification IoT box" },
-    { src: "/assets/expo/device_closeup.jpg", caption: "Detailed front panel wiring of the ESP32 & NFC prototype" },
-    { src: "/assets/expo/device_in_train.jpg", caption: "Real-world testing of the verification system on-board the train" }
-  ];
 
   useEffect(() => {
     if (!isOpen) return;
@@ -122,7 +144,7 @@ function ProjectExpoFolderCard({ item, index }: { item: typeof milestones[0]; in
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen]);
+  }, [isOpen, photos.length]);
 
   const leftPhotoVariants = {
     initial: { y: 25, x: -10, rotate: -8, scale: 0.9, opacity: 0.8 },
@@ -146,7 +168,10 @@ function ProjectExpoFolderCard({ item, index }: { item: typeof milestones[0]; in
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: index * 0.1 }}
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          setActivePhotoIdx(0);
+          setIsOpen(true);
+        }}
         whileHover="hover"
         className="relative h-[200px] cursor-pointer group select-none overflow-visible"
       >
@@ -159,32 +184,38 @@ function ProjectExpoFolderCard({ item, index }: { item: typeof milestones[0]; in
         {/* Glimpse Photos Stack (Fanning out on hover) */}
         <div className="absolute inset-x-0 top-3 bottom-[60%] overflow-visible z-10">
           
-          {/* Photo 1: Left tilted */}
-          <motion.div 
-            variants={leftPhotoVariants}
-            initial="initial"
-            className="absolute left-[12%] top-2 w-[38%] aspect-[4/3] rounded-lg border border-white/10 shadow-2xl overflow-hidden origin-bottom transition-all duration-300 pointer-events-none"
-          >
-            <img src={photos[2].src} alt="Working on device" className="w-full h-full object-cover" />
-          </motion.div>
+          {/* Left photo */}
+          {leftPhotoIdx < photos.length && (
+            <motion.div 
+              variants={leftPhotoVariants}
+              initial="initial"
+              className="absolute left-[12%] top-2 w-[38%] aspect-[4/3] rounded-lg border border-white/10 shadow-2xl overflow-hidden origin-bottom transition-all duration-300 pointer-events-none"
+            >
+              <img src={photos[leftPhotoIdx].src} alt="" className="w-full h-full object-cover" />
+            </motion.div>
+          )}
 
-          {/* Photo 2: Right tilted */}
-          <motion.div 
-            variants={rightPhotoVariants}
-            initial="initial"
-            className="absolute right-[12%] top-2 w-[38%] aspect-[4/3] rounded-lg border border-white/10 shadow-2xl overflow-hidden origin-bottom transition-all duration-300 pointer-events-none"
-          >
-            <img src={photos[0].src} alt="Group photo" className="w-full h-full object-cover" />
-          </motion.div>
+          {/* Right photo */}
+          {rightPhotoIdx < photos.length && (
+            <motion.div 
+              variants={rightPhotoVariants}
+              initial="initial"
+              className="absolute right-[12%] top-2 w-[38%] aspect-[4/3] rounded-lg border border-white/10 shadow-2xl overflow-hidden origin-bottom transition-all duration-300 pointer-events-none"
+            >
+              <img src={photos[rightPhotoIdx].src} alt="" className="w-full h-full object-cover" />
+            </motion.div>
+          )}
 
-          {/* Photo 3: Center Certificate */}
-          <motion.div 
-            variants={centerPhotoVariants}
-            initial="initial"
-            className="absolute left-[32%] top-0 w-[36%] aspect-[3/4] rounded-lg border border-white/15 shadow-2xl overflow-hidden origin-bottom transition-all duration-300 pointer-events-none"
-          >
-            <img src={photos[1].src} alt="Certificate" className="w-full h-full object-cover" />
-          </motion.div>
+          {/* Center photo */}
+          {centerPhotoIdx < photos.length && (
+            <motion.div 
+              variants={centerPhotoVariants}
+              initial="initial"
+              className="absolute left-[32%] top-0 w-[36%] aspect-[3/4] rounded-lg border border-white/15 shadow-2xl overflow-hidden origin-bottom transition-all duration-300 pointer-events-none"
+            >
+              <img src={photos[centerPhotoIdx].src} alt="" className="w-full h-full object-cover" />
+            </motion.div>
+          )}
 
         </div>
 
@@ -210,7 +241,7 @@ function ProjectExpoFolderCard({ item, index }: { item: typeof milestones[0]; in
               Interactive Gallery
             </span>
             <span className="text-[9px] bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
-              5 Photos
+              {photos.length} Photos
             </span>
           </div>
         </div>
@@ -447,8 +478,31 @@ export function Experience() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {milestones.map((item, i) => {
+              if (i === 0) {
+                return (
+                  <InteractiveFolderCard 
+                    key={i} 
+                    item={item} 
+                    index={i} 
+                    photos={innovatorsPhotos}
+                    centerPhotoIdx={0}
+                    leftPhotoIdx={1}
+                    rightPhotoIdx={2}
+                  />
+                );
+              }
               if (i === 1) {
-                return <ProjectExpoFolderCard key={i} item={item} index={i} />;
+                return (
+                  <InteractiveFolderCard 
+                    key={i} 
+                    item={item} 
+                    index={i} 
+                    photos={expoPhotos}
+                    centerPhotoIdx={0}
+                    leftPhotoIdx={1}
+                    rightPhotoIdx={2}
+                  />
+                );
               }
               return (
                 <motion.div 
