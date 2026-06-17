@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { 
   Briefcase, 
@@ -8,7 +9,9 @@ import {
   Clock, 
   Users, 
   Sparkles, 
-  ChevronRight 
+  ChevronRight,
+  ChevronLeft,
+  X 
 } from "lucide-react";
 
 const roadmapEvents = [
@@ -95,8 +98,195 @@ const milestones = [
   { title: "Top 10 Rank", desc: "National Project Expo" },
   { title: "2nd Prize", desc: "Paper Presentation at SCIENSEA'24 (MECHCABS)" },
   { title: "Best Student of the year - 2016", desc: "LIC presents for top students" },
-  { title: "Football Nationals - 2019", desc: "Represented Puducherry National football team as stopper back (center defence)" }
+  { title: "Football Nationals - 2019", desc: " stopper back (center defence)" }
 ];
+
+function ProjectExpoFolderCard({ item, index }: { item: typeof milestones[0]; index: number }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [activePhotoIdx, setActivePhotoIdx] = useState(0);
+
+  const photos = [
+    { src: "/assets/expo/group_photo.jpg", caption: "Our Team at the INAE Youth Conclave 2025 banner" },
+    { src: "/assets/expo/certificate.png", caption: "Certificate of Participation - National Project Expo" },
+    { src: "/assets/expo/working_on_device.jpg", caption: "Calibrating and assembling the Ticket Verification IoT box" },
+    { src: "/assets/expo/device_closeup.jpg", caption: "Detailed front panel wiring of the ESP32 & NFC prototype" },
+    { src: "/assets/expo/device_in_train.jpg", caption: "Real-world testing of the verification system on-board the train" }
+  ];
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+      if (e.key === "ArrowRight") setActivePhotoIdx((prev) => (prev + 1) % photos.length);
+      if (e.key === "ArrowLeft") setActivePhotoIdx((prev) => (prev - 1 + photos.length) % photos.length);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
+  const leftPhotoVariants = {
+    initial: { y: 25, x: -10, rotate: -8, scale: 0.9, opacity: 0.8 },
+    hover: { y: -25, x: -35, rotate: -15, scale: 1, opacity: 1, zIndex: 10 }
+  };
+
+  const rightPhotoVariants = {
+    initial: { y: 20, x: 10, rotate: 8, scale: 0.9, opacity: 0.8 },
+    hover: { y: -30, x: 35, rotate: 15, scale: 1, opacity: 1, zIndex: 10 }
+  };
+
+  const centerPhotoVariants = {
+    initial: { y: 10, x: 0, rotate: -2, scale: 0.95, opacity: 0.9 },
+    hover: { y: -42, x: 0, rotate: 2, scale: 1.05, opacity: 1, zIndex: 20 }
+  };
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1 }}
+        onClick={() => setIsOpen(true)}
+        whileHover="hover"
+        className="relative h-[200px] cursor-pointer group select-none overflow-visible"
+      >
+        {/* Folder Back Cover */}
+        <div className="absolute inset-0 bg-neutral-950/80 rounded-3xl border border-white/5 shadow-2xl z-0" />
+        
+        {/* Folder Tab */}
+        <div className="absolute -top-3.5 left-6 w-24 h-5 bg-neutral-950/80 rounded-t-lg border-t border-x border-white/5 z-0" />
+        
+        {/* Glimpse Photos Stack (Fanning out on hover) */}
+        <div className="absolute inset-x-0 top-3 bottom-[60%] overflow-visible z-10">
+          
+          {/* Photo 1: Left tilted */}
+          <motion.div 
+            variants={leftPhotoVariants}
+            initial="initial"
+            className="absolute left-[12%] top-2 w-[38%] aspect-[4/3] rounded-lg border border-white/10 shadow-2xl overflow-hidden origin-bottom transition-all duration-300 pointer-events-none"
+          >
+            <img src={photos[2].src} alt="Working on device" className="w-full h-full object-cover" />
+          </motion.div>
+
+          {/* Photo 2: Right tilted */}
+          <motion.div 
+            variants={rightPhotoVariants}
+            initial="initial"
+            className="absolute right-[12%] top-2 w-[38%] aspect-[4/3] rounded-lg border border-white/10 shadow-2xl overflow-hidden origin-bottom transition-all duration-300 pointer-events-none"
+          >
+            <img src={photos[0].src} alt="Group photo" className="w-full h-full object-cover" />
+          </motion.div>
+
+          {/* Photo 3: Center Certificate */}
+          <motion.div 
+            variants={centerPhotoVariants}
+            initial="initial"
+            className="absolute left-[32%] top-0 w-[36%] aspect-[3/4] rounded-lg border border-white/15 shadow-2xl overflow-hidden origin-bottom transition-all duration-300 pointer-events-none"
+          >
+            <img src={photos[1].src} alt="Certificate" className="w-full h-full object-cover" />
+          </motion.div>
+
+        </div>
+
+        {/* Folder Front Cover */}
+        <div className="absolute bottom-0 inset-x-0 h-[60%] bg-gradient-to-br from-card/90 via-card/95 to-neutral-900/95 backdrop-blur-xl rounded-b-3xl rounded-t-lg border-t border-white/10 border-x border-b shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.5)] z-30 transition-all duration-500 group-hover:border-t-primary/30 flex flex-col justify-between p-5">
+          <div className="flex gap-4 items-start">
+            <div className="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 font-bold shrink-0 group-hover:scale-105 transition-transform">
+              {index + 1}
+            </div>
+            <div>
+              <h4 className="font-bold text-white text-base group-hover:text-amber-400 transition-colors leading-tight mb-1">
+                {item.title}
+              </h4>
+              <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider text-accent leading-none">
+                {item.desc}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex justify-between items-center text-xs text-muted-foreground mt-2 border-t border-white/5 pt-2">
+            <span className="font-semibold text-primary/80 group-hover:text-primary transition-colors flex items-center gap-1">
+              <Sparkles className="w-3.5 h-3.5" />
+              Interactive Gallery
+            </span>
+            <span className="text-[9px] bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
+              5 Photos
+            </span>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Lightbox / Gallery Modal */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-background/95 backdrop-blur-md z-50 flex flex-col items-center justify-center p-6">
+          {/* Close button */}
+          <button 
+            onClick={() => setIsOpen(false)}
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-colors cursor-pointer"
+            aria-label="Close Lightbox"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Main Photo Display Area */}
+          <div className="relative max-w-4xl w-full h-[60vh] flex items-center justify-center mb-6">
+            {/* Left navigation arrow */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setActivePhotoIdx((prev) => (prev - 1 + photos.length) % photos.length);
+              }}
+              className="absolute left-0 md:-left-16 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-colors cursor-pointer z-10"
+              aria-label="Previous Image"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            {/* Image */}
+            <img 
+              src={photos[activePhotoIdx].src} 
+              alt={photos[activePhotoIdx].caption} 
+              className="max-w-full max-h-full object-contain rounded-2xl border border-white/10 shadow-2xl"
+            />
+
+            {/* Right navigation arrow */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setActivePhotoIdx((prev) => (prev + 1) % photos.length);
+              }}
+              className="absolute right-0 md:-right-16 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-colors cursor-pointer z-10"
+              aria-label="Next Image"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Caption & Status */}
+          <div className="text-center mb-8 max-w-2xl px-4">
+            <h4 className="text-white text-lg font-medium leading-snug">{photos[activePhotoIdx].caption}</h4>
+            <p className="text-sm text-muted-foreground mt-1.5">Photo {activePhotoIdx + 1} of {photos.length}</p>
+          </div>
+
+          {/* Thumbnails row */}
+          <div className="flex gap-3 overflow-x-auto max-w-full pb-2 px-4 justify-start sm:justify-center">
+            {photos.map((photo, pIdx) => (
+              <button
+                key={pIdx}
+                onClick={() => setActivePhotoIdx(pIdx)}
+                className={`w-16 h-12 sm:w-20 sm:h-16 rounded-xl overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
+                  activePhotoIdx === pIdx ? "border-primary scale-105 shadow-lg shadow-primary/20" : "border-white/10 hover:border-white/30"
+                }`}
+              >
+                <img src={photo.src} alt="" className="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
 
 export function Experience() {
   return (
@@ -256,24 +446,29 @@ export function Experience() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {milestones.map((item, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="glass-card p-6 rounded-3xl hover:border-amber-500/30 transition-all duration-300 flex gap-4 items-start hover:-translate-y-1 group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 font-bold shrink-0 group-hover:scale-105 transition-transform">
-                  {i + 1}
-                </div>
-                <div>
-                  <h4 className="font-bold text-white text-lg mb-1 group-hover:text-amber-400 transition-colors">{item.title}</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+            {milestones.map((item, i) => {
+              if (i === 1) {
+                return <ProjectExpoFolderCard key={i} item={item} index={i} />;
+              }
+              return (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="glass-card p-6 rounded-3xl hover:border-amber-500/30 transition-all duration-300 flex gap-4 items-start hover:-translate-y-1 group"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 font-bold shrink-0 group-hover:scale-105 transition-transform">
+                    {i + 1}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white text-lg mb-1 group-hover:text-amber-400 transition-colors">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
@@ -281,4 +476,3 @@ export function Experience() {
     </section>
   );
 }
-
