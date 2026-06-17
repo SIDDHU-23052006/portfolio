@@ -129,6 +129,13 @@ const studentPhotos = [
   { src: "/assets/student/trophy_certificate.png", caption: "LIC Student of the Year Award 2016 Trophy and Certificate" }
 ];
 
+const footballPhotos = [
+  { src: "/assets/football/certificate.jpg", caption: "Certificate of Participation - 65th National School Games 2019-20 (Imphal, Manipur) representing Puducherry in Football" },
+  { src: "/assets/football/sitting_by_pond.jpg", caption: "At the National Games venue representing Puducherry team" },
+  { src: "/assets/football/sitting_steps1.png", caption: "Resting between matches at the tournament quarters" },
+  { src: "/assets/football/sitting_steps2.png", caption: "Tournament participation portrait in Puducherry team tracksuit" }
+];
+
 interface FolderCardProps {
   item: typeof milestones[0];
   index: number;
@@ -240,7 +247,7 @@ function InteractiveFolderCard({
               {index + 1}
             </div>
             <div>
-              <h4 className="font-bold text-white text-base group-hover:text-amber-400 transition-colors leading-tight mb-1">
+              <h4 className="font-bold text-white text-base group-hover:text-amber-400 transition-colors leading-tight mb-1 animate-pulse-once">
                 {item.title}
               </h4>
               <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider text-accent leading-none">
@@ -538,6 +545,19 @@ export function Experience() {
                     item={item} 
                     index={i} 
                     photos={studentPhotos}
+                    centerPhotoIdx={0}
+                    leftPhotoIdx={1}
+                    rightPhotoIdx={2}
+                  />
+                );
+              }
+              if (i === 4) {
+                return (
+                  <InteractiveFolderCard 
+                    key={i} 
+                    item={item} 
+                    index={i} 
+                    photos={footballPhotos}
                     centerPhotoIdx={0}
                     leftPhotoIdx={1}
                     rightPhotoIdx={2}
