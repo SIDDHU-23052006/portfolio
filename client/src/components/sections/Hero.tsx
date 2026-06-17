@@ -27,7 +27,7 @@ export function Hero() {
           
           <div>
             <p className="text-xl md:text-2xl text-white/60 font-medium mb-3">Hey, I'm</p>
-            <h1 className="text-5xl md:text-7xl font-display font-bold leading-[1.1] tracking-tight mb-4">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-bold leading-[1.1] tracking-tight mb-4">
               SIDDHARTH <span className="text-gradient">B</span>
             </h1>
             <p className="text-3xl md:text-4xl font-display font-bold text-white/80">
@@ -99,40 +99,40 @@ export function Hero() {
             <motion.div 
               animate={{ y: [0, -10, 0] }} 
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-6 left-6 z-30 px-4 py-3 rounded-xl flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/20 shadow-lg"
+              className="absolute top-4 left-4 sm:top-6 sm:left-6 z-30 px-3 py-2 sm:px-4 sm:py-3 rounded-xl flex items-center gap-2 sm:gap-3 bg-black/60 backdrop-blur-md border border-white/20 shadow-lg"
             >
-              <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
-                <span className="font-bold font-display text-lg">1st</span>
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                <span className="font-bold font-display text-sm sm:text-lg">1st</span>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium">Hackathon</p>
-                <p className="text-sm font-bold text-white">Winner</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground font-medium">Hackathon</p>
+                <p className="text-xs sm:text-sm font-bold text-white">Winner</p>
               </div>
             </motion.div>
             <motion.div 
-  animate={{ y: [0, -8, 0] }} 
-  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-  className="absolute bottom-6 left-6 z-30 px-4 py-3 rounded-xl flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/20 shadow-lg"
->
-  <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
-    <Trophy size={18} />
-  </div>
-  <div>
-    <p className="text-xs text-muted-foreground font-medium">SGFI National</p>
-    <p className="text-sm font-bold text-white">Football Player</p>
-  </div>
-</motion.div>
+              animate={{ y: [0, -8, 0] }} 
+              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="absolute top-1/2 -translate-y-1/2 left-4 sm:translate-y-0 sm:top-auto sm:bottom-6 sm:left-6 z-30 px-3 py-2 sm:px-4 sm:py-3 rounded-xl flex items-center gap-2 sm:gap-3 bg-black/60 backdrop-blur-md border border-white/20 shadow-lg"
+            >
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 shrink-0">
+                <Trophy className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+              </div>
+              <div>
+                <p className="text-[10px] sm:text-xs text-muted-foreground font-medium">SGFI National</p>
+                <p className="text-xs sm:text-sm font-bold text-white">Football Player</p>
+              </div>
+            </motion.div>
             <motion.div 
               animate={{ y: [0, 10, 0] }} 
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-6 right-6 z-30 px-4 py-3 rounded-xl flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/20 shadow-lg"
+              className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-30 px-3 py-2 sm:px-4 sm:py-3 rounded-xl flex items-center gap-2 sm:gap-3 bg-black/60 backdrop-blur-md border border-white/20 shadow-lg"
             >
-              <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
-                <span className="font-bold font-display text-lg">10</span>
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
+                <span className="font-bold font-display text-sm sm:text-lg">10</span>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground font-medium">National Expo</p>
-                <p className="text-sm font-bold text-white">Top 10 Rank</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground font-medium">National Expo</p>
+                <p className="text-xs sm:text-sm font-bold text-white">Top 10 Rank</p>
               </div>
             </motion.div>
           </div>
