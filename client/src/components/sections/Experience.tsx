@@ -115,6 +115,13 @@ const expoPhotos = [
   { src: "/assets/expo/device_in_train.jpg", caption: "Real-world testing of the verification system on-board the train" }
 ];
 
+const scienseaPhotos = [
+  { src: "/assets/sciensea/certificate.jpg", caption: "2nd Prize Winner Certificate in Paper Presentation - SCIENSEA'24 National Level Technical Symposium" },
+  { src: "/assets/sciensea/device_closeup.jpg", caption: "Prototype device demonstration close-up next to the development laptop" },
+  { src: "/assets/sciensea/working_on_prototype.png", caption: "Double-display debugging setup for calibrating the system prototype" },
+  { src: "/assets/sciensea/team_selfie.png", caption: "Team members celebrating a successful presentation at Kongu Engineering College" }
+];
+
 const studentPhotos = [
   { src: "/assets/student/certificate.jpg", caption: "LIC Student of the Year 2015-2016 Certificate for outstanding academic performance" },
   { src: "/assets/student/holding_trophy.jpg", caption: "Receiving the LIC Student of the Year Award 2016" },
@@ -505,6 +512,19 @@ export function Experience() {
                     item={item} 
                     index={i} 
                     photos={expoPhotos}
+                    centerPhotoIdx={0}
+                    leftPhotoIdx={1}
+                    rightPhotoIdx={2}
+                  />
+                );
+              }
+              if (i === 2) {
+                return (
+                  <InteractiveFolderCard 
+                    key={i} 
+                    item={item} 
+                    index={i} 
+                    photos={scienseaPhotos}
                     centerPhotoIdx={0}
                     leftPhotoIdx={1}
                     rightPhotoIdx={2}
