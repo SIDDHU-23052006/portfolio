@@ -72,13 +72,23 @@ export function Navbar() {
           </a>
         </nav>
 
-        {/* Mobile Menu Toggle */}
-        <button 
-          className="md:hidden text-white z-50 p-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Menu Toggle & Action */}
+        <div className="flex items-center gap-2 md:hidden z-50">
+          <a
+            href="/resume.pdf"
+            download="SIDDHARTH_B_Resume.pdf"
+            className="p-2 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all flex items-center justify-center"
+            aria-label="Download Resume"
+          >
+            <Download size={18} />
+          </a>
+          <button 
+            className="text-white p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
 
         {/* Mobile Nav */}
         <AnimatePresence>
@@ -102,6 +112,17 @@ export function Navbar() {
                   {link.name}
                 </motion.a>
               ))}
+              <motion.a
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+                href="/resume.pdf"
+                download="SIDDHARTH_B_Resume.pdf"
+                onClick={() => setMobileMenuOpen(false)}
+                className="mt-4 px-8 py-3 rounded-full text-base font-semibold bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all backdrop-blur-sm flex items-center gap-2"
+              >
+                <Download size={18} /> Resume
+              </motion.a>
             </motion.div>
           )}
         </AnimatePresence>
